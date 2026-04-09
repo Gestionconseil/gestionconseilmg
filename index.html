@@ -468,17 +468,7 @@
     }
 
     /* ── RESPONSIVE ── */
-    /* Hamburger button - barres empilées */
-.nav-toggle { display: none; align-items: center; justify-content: center; width:44px; height:36px; padding:6px; background:transparent; border:none; cursor:pointer; box-sizing:content-box; }
-.nav-toggle .bar { display:block; width:22px; height:2px; background-color:var(--text,#0b2340); margin:4px 0; border-radius:2px; transition:transform .25s ease, opacity .25s ease; transform-origin:center; }
-
-/* Afficher le bouton en mobile */
-@media (max-width:900px) {
-  .nav-toggle { display:flex; }
-  .nav-links { display:none; }
-}
-
- /* Hamburger button - affichage et transformation (coller après /* RESPONSIVE */ ou à la fin du fichier CSS) */
+   /* Hamburger button - trois barres empilées */
 .nav-toggle {
   display: none;
   align-items: center;
@@ -490,15 +480,15 @@
   border: none;
   cursor: pointer;
   box-sizing: content-box;
+  color: var(--text, #0b2340);
 }
 
-/* barres explicites */
 .nav-toggle .bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background-color: var(--text, #0b2340);
-  margin: 3px 0;
+  display: block !important;
+  width: 22px !important;
+  height: 2px !important;
+  background-color: var(--text, #0b2340) !important;
+  margin: 4px 0 !important;
   border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.25s ease;
   transform-origin: center;
@@ -506,48 +496,20 @@
 
 /* Afficher le bouton en mobile et cacher le menu par défaut */
 @media (max-width: 900px) {
-  .nav-toggle { display: flex; }
+  .nav-toggle { display: flex !important; }
   .nav-links { display: none; }
 
-  nav.nav-open .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--bg, #fff);
-    padding: 1rem 1.5rem 1.2rem;
-    border-bottom: 0.5px solid var(--border-soft, rgba(11,35,64,0.06));
-    box-shadow: 0 8px 20px rgba(12,35,64,0.06);
-    transform-origin: top;
-    animation: slideDown 220ms ease forwards;
-    z-index: 99;
-  }
-
-  .nav-links li { padding: 0.65rem 0; border-bottom: 0.5px solid var(--border-soft, rgba(11,35,64,0.06)); }
-  .nav-links li:last-child { border-bottom: none; }
-  .nav-links a { color: var(--text, #0b2340); font-size: 0.95rem; display: block; padding: 0.2rem 0; }
-
-  @keyframes slideDown {
-    from { opacity: 0; transform: scaleY(0.98) translateY(-6px); }
-    to   { opacity: 1; transform: scaleY(1) translateY(0); }
-  }
-
-  /* Transform hamburger into X when open */
+  /* Transformation en X quand nav ouvert */
   nav.nav-open .nav-toggle .bar:nth-child(1) {
-    transform: translateY(5px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
   }
   nav.nav-open .nav-toggle .bar:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
   }
   nav.nav-open .nav-toggle .bar:nth-child(3) {
-    transform: translateY(-5px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
   }
-}
-
 /* Optionnel : masquer le CTA si tu veux garder l'espace propre (sinon laisse tel quel) */
 .nav-cta { z-index: 101; }
 @media (max-width: 900px) {
