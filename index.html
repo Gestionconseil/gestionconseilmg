@@ -468,6 +468,16 @@
     }
 
     /* ── RESPONSIVE ── */
+    /* Hamburger button - barres empilées */
+.nav-toggle { display: none; align-items: center; justify-content: center; width:44px; height:36px; padding:6px; background:transparent; border:none; cursor:pointer; box-sizing:content-box; }
+.nav-toggle .bar { display:block; width:22px; height:2px; background-color:var(--text,#0b2340); margin:4px 0; border-radius:2px; transition:transform .25s ease, opacity .25s ease; transform-origin:center; }
+
+/* Afficher le bouton en mobile */
+@media (max-width:900px) {
+  .nav-toggle { display:flex; }
+  .nav-links { display:none; }
+}
+
  /* Hamburger button - affichage et transformation (coller après /* RESPONSIVE */ ou à la fin du fichier CSS) */
 .nav-toggle {
   display: none;
