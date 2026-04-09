@@ -545,16 +545,16 @@
 <body>
 
 <!-- ── NAVIGATION ── -->
+<!-- NAV : remplacer l'ancien nav par ceci -->
 <nav>
   <a class="logo-wrap" href="#">
-    <div class="logo-mark"><span>MG</span></div>
+    <div class="logo-mark">MG</div>
     <div>
       <div class="logo-text">Gestion Conseil MG</div>
       <div class="logo-sub">Partenaire de croissance touristique</div>
     </div>
   </a>
 
-  <!-- Bouton hamburger (visible sur mobile) -->
   <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
     <span class="bar"></span>
     <span class="bar"></span>
@@ -571,6 +571,65 @@
 
   <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Consulter</button>
 </nav>
+
+<!-- CSS minimal à ajouter dans ton fichier CSS ou <style> -->
+<style>
+/* Hamburger button - trois barres empilées */
+.nav-toggle { display: none; align-items:center; justify-content:center; width:44px; height:36px; padding:6px; background:transparent; border:none; cursor:pointer; box-sizing:content-box; }
+.nav-toggle .bar { display:block; width:22px; height:2px; background-color:var(--text,#0b2340); margin:4px 0; border-radius:2px; transition:transform .25s ease, opacity .25s ease; transform-origin:center; }
+
+@media (max-width:900px) {
+  .nav-toggle { display:flex; }
+  .nav-links { display:none; flex-direction:column; gap:0; position:absolute; top:100%; left:0; right:0; background:var(--bg,#fff); padding:1rem 1.5rem; z-index:99; }
+  .nav-links li { padding:0.6rem 0; border-bottom:0.5px solid rgba(11,35,64,0.06); }
+  nav.nav-open .nav-links { display:flex; }
+
+  /* Transformation en X */
+  nav.nav-open .nav-toggle .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  nav.nav-open .nav-toggle .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  nav.nav-open .nav-toggle .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+}
+</style>
+
+<!-- Script : coller juste avant </body> (conserver un seul bloc script) -->
+<script>
+(function() {
+  const nav = document.querySelector('nav');
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('main-nav');
+  if (!toggle || !nav || !navLinks) return;
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (nav.classList.contains('nav-open')) {
+        nav.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('nav-open')) return;
+    if (!nav.contains(e.target)) {
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900 && nav.classList.contains('nav-open')) {
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
 
 <!-- ── HERO ── -->
 <section class="hero">
