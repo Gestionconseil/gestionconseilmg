@@ -627,22 +627,14 @@ h1 em { font-style: italic; color: var(--cobalt); }
 
 .about-right p {
 
-   /* ───────────────────────────────────────────── */
-/* CONTACT — MISE EN PAGE ORIGINALE */
-/* ───────────────────────────────────────────── */
+/* CONTACT — VERSION ORIGINALE */
 
-.contact-section {
+.contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 4.5rem 3rem;
+  padding: 5rem 3rem;
   gap: 4rem;
   background: var(--bg);
-}
-
-.contact-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .contact-left .sec-label {
@@ -652,7 +644,7 @@ h1 em { font-style: italic; color: var(--cobalt); }
 
 .contact-left h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 1.4rem;
@@ -660,28 +652,28 @@ h1 em { font-style: italic; color: var(--cobalt); }
 }
 
 .contact-left p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.75;
   margin-bottom: 2rem;
   max-width: 420px;
 }
 
-.contact-details {
+.contact-infos {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.cd {
+.ci {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text);
 }
 
-.cd-dot {
+.ci-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -695,25 +687,26 @@ h1 em { font-style: italic; color: var(--cobalt); }
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  background: var(--bg-soft);
-  padding: 2.5rem;
+  background: #fff;
+  padding: 2.8rem;
   border-radius: 6px;
   border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
 }
 
-.form-row {
+.row {
   display: flex;
   gap: 1.4rem;
 }
 
-.form-group {
+.field {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.form-group label {
-  font-size: 0.8rem;
+.field label {
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--encre);
   margin-bottom: 0.4rem;
@@ -722,10 +715,10 @@ h1 em { font-style: italic; color: var(--cobalt); }
 input,
 select,
 textarea {
-  padding: 0.85rem 1rem;
+  padding: 0.9rem 1rem;
   border: 1px solid var(--border);
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   background: #fff;
   color: var(--text);
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -740,8 +733,46 @@ textarea:focus {
 }
 
 textarea {
-  min-height: 140px;
+  min-height: 150px;
   resize: vertical;
+}
+
+.submit {
+  background: var(--cobalt);
+  color: #fff;
+  padding: 1rem 1.6rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submit:hover {
+  opacity: 0.85;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .contact {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .contact-right form {
+    padding: 2rem;
+  }
+}
+
+   
+ resize: vertical;
 }
 
 .submit {
