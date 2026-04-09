@@ -970,6 +970,46 @@
   </div>
   <div class="foot-right">© 2026 · Partenaire de croissance touristique · Québec, Québec</div>
 </footer>
+// Mobile menu toggle (accessible)
+(function() {
+  const nav = document.querySelector('nav');
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('main-nav');
+
+  if (!toggle || !nav || !navLinks) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Fermer le menu quand on clique sur un lien (mobile)
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (nav.classList.contains('nav-open')) {
+        nav.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Fermer au clic en dehors du nav (mobile)
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('nav-open')) return;
+    if (!nav.contains(e.target)) {
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Fermer au resize si on passe en desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900 && nav.classList.contains('nav-open')) {
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 
 <script>
   function showTab(id, btn) {
