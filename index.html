@@ -207,23 +207,84 @@
     </div>
   </div>
   <div class="contact-right">
-    <form onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group"><label>Prénom</label><input type="text" placeholder="Votre prénom" required/></div>
-        <div class="form-group"><label>Nom</label><input type="text" placeholder="Votre nom" required/></div>
+
+    <!-- Message de succès (masqué par défaut) -->
+    <div id="form-success" style="display:none;padding:2.5rem;text-align:center;">
+      <div style="width:52px;height:52px;background:#EEF2F8;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2458A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <div class="form-group"><label>Courriel</label><input type="email" placeholder="votre@email.com" required/></div>
-      <div class="form-group"><label>Établissement</label><input type="text" placeholder="Nom de votre établissement"/></div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#0C2340;margin-bottom:.6rem">Message envoyé !</h3>
+      <p style="font-size:.88rem;font-weight:300;color:#4A6080;line-height:1.7">Merci pour votre message. Nous vous répondrons dans les 24h ouvrées.</p>
+      <button onclick="resetForm()" style="margin-top:1.5rem;background:transparent;border:1px solid #2458A8;color:#2458A8;padding:.6rem 1.4rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;">Envoyer un autre message</button>
+    </div>
+
+    <!-- Message d'erreur (masqué par défaut) -->
+    <div id="form-error" style="display:none;padding:.75rem 1rem;background:#FEF2F2;border:0.5px solid #FCA5A5;border-radius:6px;margin-bottom:1.2rem;font-size:.83rem;color:#991B1B;">
+      Une erreur s'est produite. Veuillez réessayer ou nous écrire directement à <a href="mailto:contact@gestionconseilmg.com" style="color:#991B1B;font-weight:500">contact@gestionconseilmg.com</a>
+    </div>
+
+    <form id="contact-form"
+          action="https://formspree.io/f/xbdpvber"
+          method="POST">
+
+      <!-- Champ anti-spam honeypot (invisible) -->
+      <input type="text" name="_gotcha" style="display:none"/>
+
+      <!-- Sujet du courriel reçu dans Formspree -->
+      <input type="hidden" name="_subject" value="Nouvelle demande — Gestion Conseil MG"/>
+
       <div class="form-row">
-        <div class="form-group"><label>Type d'établissement</label>
-          <select><option value="" disabled selected>Votre secteur</option><option>Hôtel</option><option>Auberge</option><option>Camping</option><option>Résidence de tourisme</option><option>Autre</option></select>
+        <div class="form-group">
+          <label for="prenom">Prénom <span style="color:#C47A1E">*</span></label>
+          <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required/>
         </div>
-        <div class="form-group"><label>Service souhaité</label>
-          <select><option value="" disabled selected>Votre besoin</option><option>Diagnostic et recommandations</option><option>Tarification dynamique</option><option>Mise en marché</option><option>Transition numérique</option><option>Autre</option></select>
+        <div class="form-group">
+          <label for="nom">Nom <span style="color:#C47A1E">*</span></label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom" required/>
         </div>
       </div>
-      <div class="form-group"><label>Message</label><textarea placeholder="Décrivez brièvement votre projet..."></textarea></div>
-      <button type="submit" class="submit">Envoyer ma demande</button>
+
+      <div class="form-group">
+        <label for="email">Courriel <span style="color:#C47A1E">*</span></label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="etablissement">Établissement</label>
+        <input type="text" id="etablissement" name="etablissement" placeholder="Nom de votre établissement"/>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="secteur">Type d'établissement</label>
+          <select id="secteur" name="secteur">
+            <option value="" disabled selected>Votre secteur</option>
+            <option>Hôtel</option>
+            <option>Auberge</option>
+            <option>Camping</option>
+            <option>Résidence de tourisme</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="service">Service souhaité</label>
+          <select id="service" name="service">
+            <option value="" disabled selected>Votre besoin</option>
+            <option>Diagnostic et recommandations</option>
+            <option>Tarification dynamique</option>
+            <option>Mise en marché</option>
+            <option>Transition numérique</option>
+            <option>Autre</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message <span style="color:#C47A1E">*</span></label>
+        <textarea id="message" name="message" placeholder="Décrivez brièvement votre projet ou vos besoins..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit" id="submit-btn">Envoyer ma demande</button>
     </form>
   </div>
 </section>
@@ -265,10 +326,61 @@
 </footer>
 
 <script>
+// Hamburger menu
 const hamburger=document.querySelector('.hamburger'),mobileMenu=document.querySelector('.mobile-menu');
 hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}));
-function handleSubmit(e){e.preventDefault();const b=e.target.querySelector('.submit');b.textContent='Message envoyé ✓';b.style.background='#C47A1E';setTimeout(()=>{b.textContent='Envoyer ma demande';b.style.background='';e.target.reset();},3000);}
+
+// Formulaire Formspree
+const form = document.getElementById('contact-form');
+const btn  = document.getElementById('submit-btn');
+const successBox = document.getElementById('form-success');
+const errorBox   = document.getElementById('form-error');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  errorBox.style.display = 'none';
+
+  // État : envoi en cours
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+  btn.style.opacity = '0.65';
+
+  try {
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      // Succès : afficher le message de confirmation
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+    } else {
+      // Erreur serveur Formspree
+      const json = await response.json();
+      throw new Error(json.error || 'Erreur serveur');
+    }
+  } catch (err) {
+    // Afficher le message d'erreur
+    errorBox.style.display = 'block';
+    btn.textContent = 'Envoyer ma demande';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+});
+
+function resetForm() {
+  form.reset();
+  form.style.display = 'block';
+  successBox.style.display = 'none';
+  btn.textContent = 'Envoyer ma demande';
+  btn.disabled = false;
+  btn.style.opacity = '1';
+}
 </script>
 </body>
 </html>
