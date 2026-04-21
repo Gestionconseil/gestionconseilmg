@@ -1,1 +1,388 @@
-<!DOCTYPE html>\n<html>\n<head>\n    <title>Your Page Title</title>\n</head>\n<body>\n    <div class="hero-right-bg">\n        <img src="Gemini_Generated_Image_flobobflobobflob.png" alt="Generated Image">\n    </div>\n    <div>Your other content here</div>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestion Conseil MG | Partenaire de croissance touristique</title>
+  <meta name="description" content="Gestion Conseil MG accompagne les hôtels, auberges, campings et résidences de tourisme dans leur développement stratégique."/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .hero { display: grid; grid-template-columns: 1.2fr 1fr; min-height: 540px; }
+    .hero-left { padding: 5rem 3rem 4rem; display: flex; flex-direction: column; justify-content: center; border-right: 0.5px solid var(--border-soft); }
+    .hero-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem; }
+    .tag-line { width: 26px; height: 1px; background: var(--ocre); }
+    .tag-txt { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; color: var(--ocre); text-transform: uppercase; }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; line-height: 1.15; color: var(--text); margin-bottom: 1.5rem; font-weight: 400; }
+    h1 em { font-style: italic; color: var(--cobalt); }
+    .hero-desc { font-size: 0.92rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; max-width: 400px; margin-bottom: 2.5rem; }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .hero-right { display: grid; grid-template-rows: 1fr 1fr; background: var(--encre); position: relative; overflow: hidden; }
+    .hero-right-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.18; }
+    .hero-right-overlay { position: absolute; inset: 0; background: linear-gradient(160deg,rgba(12,35,64,.55) 0%,rgba(36,88,168,.35) 100%); z-index: 1; }
+    .hero-stat-block { padding: 2.5rem; border-bottom: 0.5px solid rgba(255,255,255,.08); display: flex; flex-direction: column; justify-content: flex-end; position: relative; z-index: 2; }
+    .hero-stat-block:last-child { border-bottom: none; }
+    .big-num { font-family: 'Cormorant Garamond', serif; font-size: 3.8rem; font-weight: 600; color: #fff; line-height: 1; }
+    .big-label { font-size: 0.8rem; font-weight: 300; color: rgba(255,255,255,.6); letter-spacing: .06em; margin-top: .5rem; }
+    /* Services cards aperçu */
+    .home-services { padding: 4.5rem 3rem; background: var(--bg-soft); }
+    .svc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .svc-card { background: var(--bg); border: 0.5px solid var(--border-soft); border-radius: var(--radius-lg); padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; transition: border-color .2s, box-shadow .2s; }
+    .svc-card:hover { border-color: var(--cobalt); }
+    .svc-n { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--cobalt); opacity: .3; }
+    .svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--text); line-height: 1.3; }
+    .svc-card h3 em { font-style: italic; color: var(--cobalt); }
+    .svc-card p { font-size: 0.8rem; font-weight: 300; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .svc-link { font-size: 0.72rem; font-weight: 500; color: var(--cobalt); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; }
+    /* CTA BAND */
+    .cta-band { padding: 3.5rem 3rem; background: var(--cobalt); display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .cta-band h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #fff; font-weight: 400; }
+    .cta-band h2 em { font-style: italic; color: var(--safran); }
+    .btn-white { background: #fff; color: var(--cobalt); border: none; padding: .9rem 2.2rem; font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; border-radius: 3px; transition: opacity .2s; text-decoration: none; display: inline-block; }
+    .btn-white:hover { opacity: .9; }
+    /* CONTACT */
+    .contact-section { display: grid; grid-template-columns: 1fr 1fr; }
+    .contact-left { padding: 4.5rem 3rem; background: var(--encre); }
+    .contact-left .sec-label { color: var(--safran); }
+    .contact-left h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: #fff; margin-bottom: 1.5rem; }
+    .contact-left p { font-size: .88rem; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.8; margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: .8rem; }
+    .cd { font-size: .83rem; font-weight: 300; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: 11px; }
+    .cd-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--safran); flex-shrink: 0; }
+    .contact-right { padding: 4.5rem 3rem; background: var(--bg-soft); }
+    .form-group { margin-bottom: 1.3rem; }
+    .form-group label { display: block; font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .5rem; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: .82rem 1rem; border: 0.5px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 300; outline: none; transition: border-color .2s; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--cobalt); }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .submit { background: var(--cobalt); color: #fff; border: none; padding: .9rem 2.2rem; font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; border-radius: 3px; margin-top: .5rem; transition: opacity .2s; }
+    .submit:hover { opacity: .88; }
+    @media (max-width:860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { grid-template-columns: 1fr 1fr; grid-template-rows: auto; min-height: auto; }
+      .hero-stat-block { border-bottom: none; border-right: 0.5px solid rgba(255,255,255,.08); }
+      .hero-stat-block:last-child { border-right: none; }
+      h1 { font-size: 2.4rem; }
+      .hero-left { padding: 3rem 1.5rem; }
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+      .home-services { padding: 3rem 1.5rem; }
+      .cta-band { padding: 2.5rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .contact-section { grid-template-columns: 1fr; }
+      .contact-left, .contact-right { padding: 3rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width:520px) { .svc-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo-wrap" href="index.html">
+    <div class="logo-mark"><span>MG</span></div>
+    <div><div class="logo-text">Gestion Conseil MG</div><div class="logo-sub">Partenaire de croissance touristique</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="secteurs.html">Secteurs</a></li>
+    <li><a href="approche.html">Notre approche</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Consulter</a>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="services.html">Services</a>
+  <a href="secteurs.html">Secteurs</a>
+  <a href="approche.html">Notre approche</a>
+  <a href="apropos.html">À propos</a>
+  <a class="mobile-cta" href="#contact">Consulter</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><div class="tag-line"></div><div class="tag-txt">Conseil &amp; Gestion Touristique · Québec</div></div>
+    <h1>Votre <em>partenaire</em><br>de croissance<br>dans le tourisme</h1>
+    <p class="hero-desc">Gestion Conseil MG accompagne les acteurs du tourisme dans la structuration, le développement et l'optimisation de leurs activités — avec rigueur et vision.</p>
+    <div class="hero-actions">
+      <a class="btn-dark" href="#contact">Démarrer un projet</a>
+      <a class="btn-outline" href="services.html">Découvrir nos services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <svg class="hero-right-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="geo" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+          <polygon points="0,0 80,0 0,80" fill="#5B90D8" opacity=".6"/>
+          <polygon points="80,80 80,0 0,80" fill="#2458A8" opacity=".5"/>
+          <polygon points="40,10 70,40 40,70 10,40" fill="#C47A1E" opacity=".25"/>
+          <rect x="32" y="32" width="16" height="16" fill="#fff" opacity=".08" transform="rotate(45 40 40)"/>
+        </pattern>
+        <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <line x1="40" y1="0" x2="0" y2="40" stroke="#fff" stroke-width=".4" opacity=".3"/>
+          <line x1="0" y1="0" x2="40" y2="40" stroke="#fff" stroke-width=".4" opacity=".15"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="600" fill="url(#geo)"/>
+      <rect width="400" height="600" fill="url(#grid)"/>
+      <polygon points="0,0 200,0 0,200" fill="#E8A84C" opacity=".12"/>
+      <polygon points="400,600 200,600 400,400" fill="#5B90D8" opacity=".15"/>
+      <circle cx="320" cy="480" r="90" fill="none" stroke="#C47A1E" stroke-width="1" opacity=".2"/>
+      <circle cx="80" cy="120" r="60" fill="none" stroke="#fff" stroke-width=".8" opacity=".12"/>
+      <line x1="0" y1="400" x2="400" y2="200" stroke="#E8A84C" stroke-width=".8" opacity=".15"/>
+    </svg>
+    <div class="hero-right-overlay"></div>
+    <div class="hero-stat-block">
+      <div class="big-num">15+</div>
+      <div class="big-label">Années dédiées à l'optimisation des services immobiliers, de l'hébergement touristique et de l'expérience client.</div>
+    </div>
+    <div class="hero-stat-block">
+      <div class="big-num">+100</div>
+      <div class="big-label">Propriétés gérées</div>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINE BAR -->
+<div class="tagline-bar">
+  <span class="tl-item">Diagnostic et Recommandation </span><div class="tl-dot"></div>
+  <span class="tl-item">Tarification dynamique</span><div class="tl-dot"></div>
+  <span class="tl-item">Mise en marché</span><div class="tl-dot"></div>
+  <span class="tl-item">Transition numérique</span>
+</div>
+
+<!-- APERÇU SERVICES -->
+<section class="home-services">
+  <div class="sec-header">
+    <div><span class="sec-label">Nos services</span><h2>Quatre leviers pour<br>accélérer votre croissance</h2></div>
+    <p class="sec-desc-right">Un accompagnement structuré, de l'analyse initiale à la transformation numérique.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-n">01</div>
+      <h3>Diagnostic &amp; <em>Recommandations</em></h3>
+      <p>Audit complet, analyse concurrentielle et plan d'action stratégique pour poser les bonnes bases.</p>
+      <a class="svc-link" href="services.html">En savoir plus →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">02</div>
+      <h3>Tarification <em>Dynamique</em></h3>
+      <p>Grille de prix saisonnière, optimisation du taux d'occupation et veille concurrentielle continue.</p>
+      <a class="svc-link" href="services.html">En savoir plus →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">03</div>
+      <h3>Accompagnement &amp; <em>Mise en marché</em></h3>
+      <p>Photos, intégration sur les plateformes, Airbnb, Booking, Expédia, etc. Suivi régulier pour une visibilité optimale.</p>
+      <a class="svc-link" href="services.html">En savoir plus →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">04</div>
+      <h3>Transition <em>Numérique</em></h3>
+      <p>Sélection d'outils adaptés selon vos besoins, intégration pour l'efficacité de vos opérations et de vos revenus.</p>
+      <a class="svc-link" href="services.html">En savoir plus →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Prêt à faire<br><em>grandir votre établissement ?</em></h2>
+  <a class="btn-white" href="#contact">Parlons de votre projet</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left">
+    <span class="sec-label">Contact</span>
+    <h2>Parlons de votre projet</h2>
+    <p>Que vous soyez un hôtel, une auberge, un camping ou une résidence de tourisme, nous sommes disponibles pour échanger sans engagement.</p>
+    <div class="contact-details">
+      <div class="cd"><div class="cd-dot"></div>Québec, Québec, Canada</div>
+      <div class="cd"><div class="cd-dot"></div>contact@gestionconseilmg.com</div>
+      <div class="cd"><div class="cd-dot"></div>Retour rapide pour prendre rendez-vous</div>
+      <div class="cd"><div class="cd-dot"></div>Parlons de vos enjeux · Sans engagement</div>
+    </div>
+  </div>
+  <div class="contact-right">
+
+    <!-- Message de succès (masqué par défaut) -->
+    <div id="form-success" style="display:none;padding:2.5rem;text-align:center;">
+      <div style="width:52px;height:52px;background:#EEF2F8;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2458A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#0C2340;margin-bottom:.6rem">Message envoyé !</h3>
+      <p style="font-size:.88rem;font-weight:300;color:#4A6080;line-height:1.7">Merci pour votre message. Nous vous répondrons dans les 24h ouvrées.</p>
+      <button onclick="resetForm()" style="margin-top:1.5rem;background:transparent;border:1px solid #2458A8;color:#2458A8;padding:.6rem 1.4rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;">Envoyer un autre message</button>
+    </div>
+
+    <!-- Message d'erreur (masqué par défaut) -->
+    <div id="form-error" style="display:none;padding:.75rem 1rem;background:#FEF2F2;border:0.5px solid #FCA5A5;border-radius:6px;margin-bottom:1.2rem;font-size:.83rem;color:#991B1B;">
+      Une erreur s'est produite. Veuillez réessayer ou nous écrire directement à <a href="mailto:contact@gestionconseilmg.com" style="color:#991B1B;font-weight:500">contact@gestionconseilmg.com</a>
+    </div>
+
+    <form id="contact-form"
+          action="https://formspree.io/f/xbdpvber"
+          method="POST">
+
+      <!-- Champ anti-spam honeypot (invisible) -->
+      <input type="text" name="_gotcha" style="display:none"/>
+
+      <!-- Sujet du courriel reçu dans Formspree -->
+      <input type="hidden" name="_subject" value="Nouvelle demande — Gestion Conseil MG"/>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prenom">Prénom <span style="color:#C47A1E">*</span></label>
+          <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required/>
+        </div>
+        <div class="form-group">
+          <label for="nom">Nom <span style="color:#C47A1E">*</span></label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom" required/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Courriel <span style="color:#C47A1E">*</span></label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="etablissement">Établissement</label>
+        <input type="text" id="etablissement" name="etablissement" placeholder="Nom de votre établissement"/>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="secteur">Type d'établissement</label>
+          <select id="secteur" name="secteur">
+            <option value="" disabled selected>Votre secteur</option>
+            <option>Hôtel</option>
+            <option>Auberge</option>
+            <option>Camping</option>
+            <option>Résidence de tourisme</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="service">Service souhaité</label>
+          <select id="service" name="service">
+            <option value="" disabled selected>Votre besoin</option>
+            <option>Diagnostic et recommandations</option>
+            <option>Tarification dynamique</option>
+            <option>Mise en marché</option>
+            <option>Transition numérique</option>
+            <option>Autre</option>
+            <option>L'ensemble</option>
+            
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message <span style="color:#C47A1E">*</span></label>
+        <textarea id="message" name="message" placeholder="Décrivez brièvement votre projet ou vos besoins..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit" id="submit-btn">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="foot-brand">
+      <span class="foot-logo">Gestion Conseil MG</span>
+      <span class="foot-tagline">Partenaire de croissance touristique</span>
+    </div>
+    <div class="foot-nav">
+      <div class="foot-nav-col">
+        <span class="foot-col-title">Services</span>
+        <a href="services.html">Diagnostic &amp; Recommandations</a>
+        <a href="services.html">Tarification dynamique</a>
+        <a href="services.html">Mise en marché</a>
+        <a href="services.html">Transition numérique</a>
+      </div>
+      <div class="foot-nav-col">
+        <span class="foot-col-title">Secteurs</span>
+        <a href="secteurs.html">Hôtel</a>
+        <a href="secteurs.html">Auberge</a>
+        <a href="secteurs.html">Camping</a>
+        <a href="secteurs.html">Résidence de tourisme</a>
+      </div>
+      <div class="foot-nav-col">
+        <span class="foot-col-title">À propos</span>
+        <a href="apropos.html">Notre cabinet</a>
+        <a href="approche.html">Notre approche</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="foot-copy">© 2026 Gestion Conseil MG · Québec, Québec, Canada · Tous droits réservés</span>
+    <span class="foot-contact"><a href="mailto:matthieu.gergaud@gmail.com">contact@gestionconseilmg.com</a></span>
+  </div>
+</footer>
+
+<script>
+// Hamburger menu
+const hamburger=document.querySelector('.hamburger'),mobileMenu=document.querySelector('.mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}));
+
+// Formulaire Formspree
+const form = document.getElementById('contact-form');
+const btn  = document.getElementById('submit-btn');
+const successBox = document.getElementById('form-success');
+const errorBox   = document.getElementById('form-error');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  errorBox.style.display = 'none';
+
+  // État : envoi en cours
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+  btn.style.opacity = '0.65';
+
+  try {
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      // Succès : afficher le message de confirmation
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+    } else {
+      // Erreur serveur Formspree
+      const json = await response.json();
+      throw new Error(json.error || 'Erreur serveur');
+    }
+  } catch (err) {
+    // Afficher le message d'erreur
+    errorBox.style.display = 'block';
+    btn.textContent = 'Envoyer ma demande';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+});
+
+function resetForm() {
+  form.reset();
+  form.style.display = 'block';
+  successBox.style.display = 'none';
+  btn.textContent = 'Envoyer ma demande';
+  btn.disabled = false;
+  btn.style.opacity = '1';
+}
+</script>
+</body>
+</html>
