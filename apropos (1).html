@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>À propos | Gestion Conseil MG</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; background: var(--encre); }
+    .about-left { padding: 4.5rem 3rem; border-right: 0.5px solid rgba(255,255,255,.08); }
+    .about-left .sec-label { color: var(--safran); }
+    .about-left h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: #fff; font-weight: 400; margin-bottom: 1.5rem; }
+    .mg-mono { width: 80px; height: 80px; border: 1.5px solid var(--ocre); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
+    .mg-mono span { font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; font-weight: 600; color: var(--safran); }
+    .val-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .val { border: 0.5px solid rgba(255,255,255,.1); padding: 1rem; border-radius: var(--radius); background: rgba(255,255,255,.05); }
+    .val h4 { font-size: .83rem; font-weight: 500; color: var(--safran); margin-bottom: .35rem; }
+    .val p { font-size: .76rem; font-weight: 300; color: rgba(255,255,255,.55); line-height: 1.6; }
+
+    /* ABOUT RIGHT — image + texte */
+    .about-right { padding: 4.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+    .about-img-wrap {
+      margin-bottom: 1.8rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 0.5px solid rgba(255,255,255,.12);
+      position: relative;
+    }
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(12,35,64,0.45) 100%);
+      pointer-events: none;
+    }
+    .about-img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      object-position: center 28%;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .about-img-wrap:hover .about-img { transform: scale(1.04); }
+    .about-right p { font-size: .9rem; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.85; margin-bottom: 1.2rem; }
+
+    .mission { padding: 4.5rem 3rem; }
+    .mission-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; margin-top: 2.5rem; }
+    .mission-side h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--text); line-height: 1.25; }
+    .mission-side h3 em { font-style: italic; color: var(--cobalt); }
+    .mission-body p { font-size: .9rem; font-weight: 300; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.2rem; }
+    .zones { padding: 4rem 3rem; background: var(--bg-soft); }
+    .zones-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .zone-card { background: var(--bg); border: 0.5px solid var(--border-soft); border-radius: var(--radius-lg); padding: 2rem 1.5rem; border-top: 3px solid var(--cobalt); }
+    .zone-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--text); margin-bottom: .65rem; }
+    .zone-card p { font-size: .82rem; font-weight: 300; color: var(--text-muted); line-height: 1.65; }
+
+    @media(max-width:860px){
+      .about-grid { grid-template-columns: 1fr; }
+      .about-left { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,.08); padding: 3rem 1.5rem; }
+      .about-right { padding: 3rem 1.5rem; }
+      .about-img { height: 220px; }
+      .mission { padding: 3rem 1.5rem; }
+      .mission-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .zones { padding: 3rem 1.5rem; }
+      .zones-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo-wrap" href="index.html"><div class="logo-mark"><span>MG</span></div><div><div class="logo-text">Gestion Conseil MG</div><div class="logo-sub">Partenaire de croissance touristique</div></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li><li><a href="services.html">Services</a></li><li><a href="secteurs.html">Secteurs</a></li><li><a href="approche.html">Notre approche</a></li><li><a href="apropos.html" class="active">À propos</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Consulter</a>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a><a href="services.html">Services</a><a href="secteurs.html">Secteurs</a><a href="approche.html">Notre approche</a><a href="apropos.html">À propos</a>
+  <a class="mobile-cta" href="index.html#contact">Consulter</a>
+</div>
+
+<div class="page-hero">
+  <span class="sec-label">À propos</span>
+  <h1>Une expertise<br><em>au service du tourisme</em></h1>
+  <p>Notre mission : Accompagner les acteurs du tourisme dans leur croissance en alliant expertise stratégique et approche humaine, pour transformer vos ambitions en succès durables.</p>
+</div>
+
+<div class="tagline-bar">
+  <span class="tl-item">Diagnostic</span><div class="tl-dot"></div>
+  <span class="tl-item">Tarification dynamique</span><div class="tl-dot"></div>
+  <span class="tl-item">Mise en marché</span><div class="tl-dot"></div>
+  <span class="tl-item">Transition numérique</span>
+</div>
+
+<section class="about-grid">
+  <div class="about-left">
+    <div class="mg-mono"><span>MG</span></div>
+    <span class="sec-label">Qui sommes-nous</span>
+    <h2>Valeurs &amp; engagements</h2>
+    <div class="val-grid">
+      <div class="val"><h4>Rigueur</h4><p>Des analyses précises fondées sur des données concrètes et terrain.</p></div>
+      <div class="val"><h4>Proximité</h4><p>Un accompagnement personnalisé, à l'écoute de vos réalités.</p></div>
+      <div class="val"><h4>Innovation</h4><p>Des approches créatives pour un secteur en constante évolution.</p></div>
+      <div class="val"><h4>Impact</h4><p>Des résultats mesurables et durables pour votre organisation.</p></div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-img-wrap">
+      <img
+        src="https://raw.githubusercontent.com/Gestionconseil/gestionconseilmg/main/dossier/Gemini_Generated_Image_flobobflobobflob.png"
+        alt="Équipe en réunion collaborative avec vue sur le Château Frontenac, Québec"
+        class="about-img"
+        loading="lazy"
+      />
+    </div>
+    <p>Gestion Conseil MG est un cabinet spécialisé en conseil et gestion touristique, fondé sur une vision simple : aider les acteurs du tourisme à grandir avec stratégie et efficacité.</p>
+    <p>Basé à Québec, nous accompagnons des clients du Québec, de France et partout où le tourisme représente un levier de développement économique et social.</p>
+    <p>Notre approche est toujours sur mesure. Nous ne croyons pas aux solutions génériques. Chaque mandat commence par une écoute approfondie de votre contexte, de vos contraintes et de vos ambitions.</p>
+  </div>
+</section>
+
+<section class="mission">
+  <span class="sec-label">Notre mission</span>
+  <div class="mission-grid">
+    <div class="mission-side">
+      <h3>Transformer les défis touristiques en <em>opportunités de croissance</em></h3>
+      <a class="btn-dark" href="index.html#contact" style="margin-top:1.5rem">Travaillons ensemble</a>
+    </div>
+    <div class="mission-body">
+      <p>Le secteur touristique est en transformation accélérée : digitalisation des réservations, montée des plateformes OTA, exigences croissantes des voyageurs, pression sur les marges. Face à ces enjeux, nous aidons nos clients à prendre de l'avance plutôt qu'à subir les changements.</p>
+      <p>Notre mission est de mettre l'expertise stratégique et opérationnelle au service des acteurs de l'hébergement touristique, quelle que soit leur taille — du petit camping familial à la résidence de tourisme multi-sites.</p>
+      <p>Nous croyons que la performance durable repose sur trois piliers : une stratégie claire, des outils adaptés et des équipes bien formées. C'est exactement ce que nous vous aidons à construire.</p>
+    </div>
+  </div>
+</section>
+
+<section class="zones">
+  <span class="sec-label">Zones d'intervention</span>
+  <h2>Un rayonnement<br>sur 2 continents</h2>
+  <div class="zones-grid">
+    <div class="zone-card">
+      <h4>Québec</h4>
+      <p>Notre base principale. Nous accompagnons des établissements touristiques à travers le Québec, avec une connaissance approfondie du marché local.</p>
+    </div>
+    <div class="zone-card">
+      <h4>France</h4>
+      <p>Nous accompagnons les entreprises touristiques face aux enjeux de la forte saisonnalité, en leur apportant des outils de gestion éprouvés et une vision stratégique pour pérenniser leurs activités toute l'année.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="foot-brand"><span class="foot-logo">Gestion Conseil MG</span><span class="foot-tagline">Partenaire de croissance touristique</span></div>
+    <div class="foot-nav">
+      <div class="foot-nav-col"><span class="foot-col-title">Services</span><a href="services.html">Diagnostic &amp; Recommandations</a><a href="services.html">Tarification dynamique</a><a href="services.html">Mise en marché</a><a href="services.html">Transition numérique</a></div>
+      <div class="foot-nav-col"><span class="foot-col-title">Secteurs</span><a href="secteurs.html">Hôtel</a><a href="secteurs.html">Auberge</a><a href="secteurs.html">Camping</a><a href="secteurs.html">Résidence de tourisme</a></div>
+      <div class="foot-nav-col"><span class="foot-col-title">À propos</span><a href="apropos.html">Notre cabinet</a><a href="approche.html">Notre approche</a><a href="index.html#contact">Contact</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="foot-copy">© 2026 Gestion Conseil MG · Québec, Québec, Canada · Tous droits réservés</span>
+    <span class="foot-contact"><a href="mailto:matthieu.gergaud@gmail.com">contact@gestionconseilmg.com</a></span>
+  </div>
+</footer>
+<script>
+const hamburger=document.querySelector('.hamburger'),mobileMenu=document.querySelector('.mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}));
+</script>
+</body>
+</html>
